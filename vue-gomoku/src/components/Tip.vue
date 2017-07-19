@@ -29,7 +29,11 @@ export default {
   }
 }
 </script>
-<style scoped>
+
+<style lang="scss" scoped>
+  $red: red;
+  $green: #449d44;
+
   @keyframes move {
     from {top: 0;}
     to {top: 20%;}
@@ -61,10 +65,10 @@ export default {
     transform: rotate(180deg);
   }
   .done{
-    background: #449d44;
+    background: $green;
   }
   .fail{
-    background: red;
+    background: $red;
   }
   .hide{
     display: none;
