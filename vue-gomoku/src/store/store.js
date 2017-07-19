@@ -15,6 +15,9 @@ let model = {
   rows: rows,
   step: true,//true为偶数，黑
   color: color,
+  showTip: false,
+  tips: '',
+  finish: false,
   history: []//历史操作坐标
 };
 
@@ -23,6 +26,7 @@ const store = new Vuex.Store({
   state: model,
   mutations: {
     restart() {
+      model.finish = false;
       for(let i = 0; i < rows; i++){//隐藏所有棋子
         for(let j = 0; j < rows; j++){
           vm.$set(model.color[i],j,'hide');
@@ -32,6 +36,7 @@ const store = new Vuex.Store({
       vm.$set(model,'history',[]);//重置上一步为空
     },
     regret() {
+      model.finish = false;
       let index = model.history.length-1;
       if(index >= 0){//无棋子不可悔棋
         vm.$set(model.color[model.history[index][0]],model.history[index][1],'hide');//置反先手

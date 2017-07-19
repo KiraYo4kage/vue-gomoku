@@ -29,115 +29,115 @@ import store from '../store/store.js'
 //   color: color,
 //   history: []//历史操作坐标
 // };
-// function checkForWin(){
-//   let result;
-//   result = leftToRight() || upToDown() || diagonal() || reverseDiagonal();
-//   result === 'black' && (result = '黑旗获胜=。=');
-//   result === 'white' && (result = '白旗获胜=。=');
-//   return result;
-// }
-// function leftToRight(){//横向检查
-//   let game = store.state.color,
-//       num = 0,
-//       thisColor,
-//       lastColor,
-//       i,j;
-//   for(i = 0; i < game.length; i++){
-//     for(j = 0; j < game[i].length; j++){
-//       if(game[i].length - j < 5) break;//右侧不足五空，跳出
-//       if(game[i][j] !== 'hide' && num === 0){//第一个棋子
-//         thisColor = game[i][j];
-//         num++;
-//       }else if(game[i][j] !== 'hide' && num !== 0){//第N个同色棋子
-//         lastColor = thisColor;
-//         thisColor = game[i][j];
-//         thisColor === lastColor ? num++ : (num = 0);
-//         if(num === 5)
-//           return thisColor;
-//       }else{
-//         thisColor = 'hide';
-//       }
-//     }
-//   }
-//   return false;
-// }
-// function upToDown(){//纵向检查
-//   let game = store.state.color,
-//       num = 0,
-//       thisColor,
-//       lastColor,
-//       i,j;
-//   for(j = 0; j < game.length; j++){
-//     for(i = 0; i < game[j].length; i++){
-//       if(game[i].length - j < 5) break;//下侧不足五空，跳出
-//       if(game[i][j] !== 'hide' && num === 0){//第一个棋子
-//         thisColor = game[i][j];
-//         num++;
-//       }else if(game[i][j] !== 'hide' && num !== 0){//第N个同色棋子
-//         lastColor = thisColor;
-//         thisColor = game[i][j];
-//         thisColor === lastColor ? num++ : (num = 0);
-//         if(num === 5)
-//           return thisColor;
-//       }else{
-//         thisColor = 'hide';
-//       }
-//     }
-//   }
-//   return false;
-// }
-// function diagonal(){//斜向检查
-//   let game = store.state.color,
-//       num = 0,
-//       thisColor,
-//       lastColor,
-//       i,j,k;
-//   for(i = 0; i < game.length; i++){
-//     for(j = 0; j < game[i].length; j++){
-//       for(k = 0; k < 5; k++){
-//         if(i + k > game.length || j + k > game[i].length) break;//右下侧不足五空，跳出
-//         if(game[i+k][j+k] !== 'hide' && num === 0){//第一个棋子
-//           thisColor = game[i+k][j+k];
-//           num++;
-//         }else if(game[i+k][j+k] === thisColor && num !== 0){//第N个同色棋子
-//           num++;
-//           if(num === 5)
-//             return thisColor;
-//         }else{
-//           num = 0;
-//           break;
-//         }
-//       }
-//     }
-//   }
-//   return false;
-// }
-// function reverseDiagonal(){//反斜向检查
-//   let game = store.state.color,
-//       num = 0,
-//       thisColor,
-//       lastColor,
-//       i,j,k;
-//   for(i = 0; i < game.length; i++){
-//     for(j = 0; j < game[i].length; j++){
-//       for(k = 0; k < 5; k++){
-//         if(i + k > game.length || j - k < 0) break;//左下侧不足五空，跳出
-//         if(game[i+k][j-k] !== 'hide' && num === 0){//第一个棋子
-//           thisColor = game[i+k][j-k];
-//           num++;
-//         }else if(game[i+k][j-k] === thisColor && num !== 0){//第N个同色棋子
-//           num++;
-//           if(num === 5)
-//             return thisColor;
-//         }else{
-//           num = 0;
-//           break;
-//         }
-//       }
-//     }
-//   }
-//   return false;
-// }
+function checkForWin(){
+  let result;
+  result = leftToRight() || upToDown() || diagonal() || reverseDiagonal();
+  result === 'black' && (result = '黑旗获胜=。=');
+  result === 'white' && (result = '白旗获胜=。=');
+  return result;
+}
+function leftToRight(){//横向检查
+  let game = store.state.color,
+      num = 0,
+      thisColor,
+      lastColor,
+      i,j;
+  for(i = 0; i < game.length; i++){
+    for(j = 0; j < game[i].length; j++){
+      if(game[i].length - j < 5) break;//右侧不足五空，跳出
+      if(game[i][j] !== 'hide' && num === 0){//第一个棋子
+        thisColor = game[i][j];
+        num++;
+      }else if(game[i][j] !== 'hide' && num !== 0){//第N个同色棋子
+        lastColor = thisColor;
+        thisColor = game[i][j];
+        thisColor === lastColor ? num++ : (num = 0);
+        if(num === 5)
+          return thisColor;
+      }else{
+        thisColor = 'hide';
+      }
+    }
+  }
+  return false;
+}
+function upToDown(){//纵向检查
+  let game = store.state.color,
+      num = 0,
+      thisColor,
+      lastColor,
+      i,j;
+  for(j = 0; j < game.length; j++){
+    for(i = 0; i < game[j].length; i++){
+      if(game[i].length - j < 5) break;//下侧不足五空，跳出
+      if(game[i][j] !== 'hide' && num === 0){//第一个棋子
+        thisColor = game[i][j];
+        num++;
+      }else if(game[i][j] !== 'hide' && num !== 0){//第N个同色棋子
+        lastColor = thisColor;
+        thisColor = game[i][j];
+        thisColor === lastColor ? num++ : (num = 0);
+        if(num === 5)
+          return thisColor;
+      }else{
+        thisColor = 'hide';
+      }
+    }
+  }
+  return false;
+}
+function diagonal(){//斜向检查
+  let game = store.state.color,
+      num = 0,
+      thisColor,
+      lastColor,
+      i,j,k;
+  for(i = 0; i < game.length; i++){
+    for(j = 0; j < game[i].length; j++){
+      for(k = 0; k < 5; k++){
+        if(i + k > game.length || j + k > game[i].length) break;//右下侧不足五空，跳出
+        if(game[i+k][j+k] !== 'hide' && num === 0){//第一个棋子
+          thisColor = game[i+k][j+k];
+          num++;
+        }else if(game[i+k][j+k] === thisColor && num !== 0){//第N个同色棋子
+          num++;
+          if(num === 5)
+            return thisColor;
+        }else{
+          num = 0;
+          break;
+        }
+      }
+    }
+  }
+  return false;
+}
+function reverseDiagonal(){//反斜向检查
+  let game = store.state.color,
+      num = 0,
+      thisColor,
+      lastColor,
+      i,j,k;
+  for(i = 0; i < game.length; i++){
+    for(j = 0; j < game[i].length; j++){
+      for(k = 0; k < 5; k++){
+        if(i + k > game.length || j - k < 0) break;//左下侧不足五空，跳出
+        if(game[i+k][j-k] !== 'hide' && num === 0){//第一个棋子
+          thisColor = game[i+k][j-k];
+          num++;
+        }else if(game[i+k][j-k] === thisColor && num !== 0){//第N个同色棋子
+          num++;
+          if(num === 5)
+            return thisColor;
+        }else{
+          num = 0;
+          break;
+        }
+      }
+    }
+  }
+  return false;
+}
 export default {
   name: 'play',
   data() {
@@ -166,6 +166,7 @@ export default {
   // },
   methods: {
     click: function(i,j){
+      if(this.finish) return;
       if(this.color[i][j] === 'hide'){
         let _color = (this.step ? 'black' : 'white');//改变棋子颜色
         this.$set(this.color[i], j, _color);
@@ -177,7 +178,11 @@ export default {
   updated() {
     this.$nextTick( () => {
       let result = checkForWin();
-      result && alert(result);
+      if(result){
+        this.finish = true;
+        this.showTip = true;
+        this.tips = result;
+      }
     });
   }
 }
